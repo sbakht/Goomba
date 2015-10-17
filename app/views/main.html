@@ -1,17 +1,38 @@
 <div class="row marketing" ng-controller="MainCtrl">
   <div class="col-md-2">
-    <a ng-click="main.selectAllDifficulty()">All</a>
-    <div class="difficulty-check">
-      <input type="checkbox" ng-model="main.difficulty.easy" ng-change="main.updateDifficultyFilter()">
-      <label>Easy</label>
+    <div>
+      <a ng-click="main.selectAllDifficulty()">All</a>
+      <div class="difficulty-check">
+        <input type="checkbox" ng-model="main.difficulty.easy" ng-change="main.updateDifficultyFilter()">
+        <label>Easy</label>
+      </div>
+      <div class="difficulty-check">
+        <input type="checkbox" ng-model="main.difficulty.medium" ng-change="main.updateDifficultyFilter()">
+        <label>Medium</label>
+      </div>
+      <div class="difficulty-check">
+        <input type="checkbox" ng-model="main.difficulty.hard" ng-change="main.updateDifficultyFilter()">
+        <label>Hard</label>
+      </div>
     </div>
-    <div class="difficulty-check">
-      <input type="checkbox" ng-model="main.difficulty.medium" ng-change="main.updateDifficultyFilter()">
-      <label>Medium</label>
-    </div>
-    <div class="difficulty-check">
-      <input type="checkbox" ng-model="main.difficulty.hard" ng-change="main.updateDifficultyFilter()">
-      <label>Hard</label>
+    <div>
+      <a ng-click="main.selectAllGame()">All</a>
+      <div class="game-check">
+        <input type="checkbox" ng-model="main.game.smb" ng-change="main.updateGameFilter()">
+        <label>Super Mario Bros.</label>
+      </div>
+      <div class="game-check">
+        <input type="checkbox" ng-model="main.game.smb3" ng-change="main.updateGameFilter()">
+        <label>Super Mario Bros. 3</label>
+      </div>
+      <div class="game-check">
+        <input type="checkbox" ng-model="main.game.smw" ng-change="main.updateGameFilter()">
+        <label>Super Mario World</label>
+      </div>
+      <div class="game-check">
+        <input type="checkbox" ng-model="main.game.smbu" ng-change="main.updateGameFilter()">
+        <label>New Super Mario Bros. U</label>
+      </div>
     </div>
   </div>
   <div class="col-md-10">
