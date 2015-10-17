@@ -8,7 +8,7 @@
  * Factory in the goombaApp.
  */
 angular.module('goombaApp')
-  .factory('ObjectFactory', function (Level, LevelCollection) {
+  .factory('ObjectFactory', function (Level, LevelCollection, Tag) {
     // Service logic
     // ...
     function createLevel(options) {
@@ -23,9 +23,16 @@ angular.module('goombaApp')
       return collection;
     }
 
+    function createTag(options) {
+      var tag = Object.create(Tag);
+      tag.init(options);
+      return tag;
+    }
+
     // Public API here
     return {
       createLevel: createLevel,
       createLevelCollection: createLevelCollection,
+      createTag: createTag,
     };
   });

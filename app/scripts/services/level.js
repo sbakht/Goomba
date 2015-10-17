@@ -20,13 +20,26 @@ angular.module('goombaApp')
         this.game = this.options.game;
         this.difficulty = this.options.difficulty;
         this.img = this.options.img;
+        this.rating = this.options.rating;
+        this.tags = this.options.tags;
       },
       options: {
         difficulty: "Unknown",
         img: "http://placeholdit.100x100",
+        rating: 0,
+        tags: [],
       },
       getJSON : function() {
         return this.options; 
+      },
+      ratingUp: function() {
+        this.rating += 1;
+      },
+      ratingDown: function() {
+        this.rating -= 1;
+      },
+      addTag : function(tag) {
+        this.tags.push(tag);
       },
 
     };
