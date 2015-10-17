@@ -46,7 +46,7 @@ angular.module('goombaApp')
         if(this._isArray(filterVal)) {
           return filterVal.indexOf(levelVal) !== -1;
         }else{
-          return levelVal == filterVal;
+          return levelVal === filterVal;
         }
       },
       _isArray: function(obj) {

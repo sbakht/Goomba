@@ -81,3 +81,12 @@ body {
     border-bottom: 0;
   }
 }
+
+
+div.difficulty-check label{
+  vertical-align: top;
+}
+
+p.empty-results {
+  font-style: italic;
+}

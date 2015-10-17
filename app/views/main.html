@@ -1,24 +1,26 @@
 <div class="row marketing" ng-controller="MainCtrl">
-
-  <a ng-click="main.filtered = main.allLevels.filter({difficulty: 'Easy'})">Easy</a>
-  <a ng-click="main.filtered = main.allLevels.filter({difficulty: 'Medium'})">Medium</a>
-  <a ng-click="main.filtered = main.allLevels.filter({difficulty: 'Hard'})">Hard</a>
-  <div ng-repeat="level in main.filtered.list || main.allLevels.list">
-  <h4>{{level.title}}</h4>
-  <p>ID: {{level.ID}}</p>
-  <p>Game: {{level.game}}</p>
-  <p>Difficulty: {{level.difficulty}}</p>
-</div>
-  <h4>{{main.test}}</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+  <div class="col-md-2">
+    <a ng-click="main.selectAllDifficulty()">All</a>
+    <div class="difficulty-check">
+      <input type="checkbox" ng-model="main.difficulty.easy" ng-change="main.updateDifficultyFilter()">
+      <label>Easy</label>
+    </div>
+    <div class="difficulty-check">
+      <input type="checkbox" ng-model="main.difficulty.medium" ng-change="main.updateDifficultyFilter()">
+      <label>Medium</label>
+    </div>
+    <div class="difficulty-check">
+      <input type="checkbox" ng-model="main.difficulty.hard" ng-change="main.updateDifficultyFilter()">
+      <label>Hard</label>
+    </div>
+  </div>
+  <div class="col-md-10">
+    <div ng-repeat="level in main.filtered.list || main.allLevels.list">
+      <h4>{{level.title}}</h4>
+      <p>ID: {{level.ID}}</p>
+      <p>Game: {{level.game}}</p>
+      <p>Difficulty: {{level.difficulty}}</p>
+    </div>
+    <p class="empty-results" ng-if="main.filtered.list.length == 0">No search results found :(</p>
+  </div>
 </div>
