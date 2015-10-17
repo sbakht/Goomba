@@ -25,17 +25,18 @@ angular.module('goombaApp')
         filtered.init();
 
         for(var i = 0; i < this.list.length; i++) {
-          if(this._isMatch(i, filters)) {
-            filtered.add(this.list[i]);
+          var level = this.list[i];
+          if(this._isMatch(level, filters)) {
+            filtered.add(level);
           }
         }
         return filtered;
       },
-      _isMatch: function(i, filters) {
+      _isMatch: function(level, filters) {
           var match = true;
           for (var key in filters) {
             if (filters.hasOwnProperty(key)) {
-              if(this.list[i][key] != filters[key]) {
+              if(level[key] != filters[key]) {
                 match = false;
               }
             }

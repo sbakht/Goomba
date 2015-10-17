@@ -26,9 +26,11 @@ describe('Service: LevelCollection', function () {
   });
 
   describe("Default Values", function() {
+
     it('levels is initialized to empty', function () {
       expect(levelCollection.list.length).toBe(0);
     });
+
   });
 
   it('should add a level', function () {
@@ -37,5 +39,43 @@ describe('Service: LevelCollection', function () {
     expect(levelCollection.list.length).toBe(1);
   });
 
+  describe("Filters", function() {
 
+    var level, level2, level3;
+    beforeEach(function() {
+      level = {title: "My Easy Level", difficulty: "Easy"};
+      level2 = {title: "My Medium Level", difficulty: "Medium"};
+      level3 = {title: "My Other Medium Level", difficulty: "Medium"};
+      levelCollection.add(level);
+      levelCollection.add(level2);
+      levelCollection.add(level3);
+    });
+
+    it('should match a level to single filter', function () {
+      var match = levelCollection._isMatch(level, {difficulty: "Easy"});
+      expect(match).toBeTruthy();
+    });
+
+    it('should match a level to multiple filters', function () {
+      var match = levelCollection._isMatch(level2, {title: "My Medium Level", difficulty: "Medium"});
+      expect(match).toBeTruthy();
+    });
+
+    it('should not find a match', function () {
+      var match = levelCollection._isMatch(level2, {title: "Non Existant", difficulty: "Medium"});
+      expect(match).toBeFalsy();
+    });
+
+    it('should return instance of LevelCollection', function () {
+      var filtered = levelCollection.filter({difficulty: "Easy"});
+      var isPrototype = LevelCollection.isPrototypeOf(filtered);
+      expect(isPrototype).toBeTruthy();
+    });
+
+    it('should find multiple matches', function () {
+      var filtered = levelCollection.filter({difficulty: "Medium"});
+      expect(filtered.list.length).toBe(2);
+    });
+
+  });
 });
