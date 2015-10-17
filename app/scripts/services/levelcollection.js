@@ -21,11 +21,18 @@ angular.module('goombaApp')
         this.list.push(level);
       },
       filter: function(filters) {
-        var match;
         var filtered = Object.create(LevelCollection);
         filtered.init();
+
         for(var i = 0; i < this.list.length; i++) {
-          match = true;
+          if(this._isMatch(filters)) {
+            filtered.add(this.list[i]);
+          }
+        }
+        return filtered;
+      },
+      _isMatch: function(filters) {
+          var match = true;
           for (var key in filters) {
             if (filters.hasOwnProperty(key)) {
               if(this.list[i][key] != filters[key]) {
@@ -33,11 +40,7 @@ angular.module('goombaApp')
               }
             }
           }
-          if(match) {
-            filtered.add(this.list[i]);
-          }
-        }
-        return filtered;
+          return match;
       },
 
     };
