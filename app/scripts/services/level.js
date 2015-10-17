@@ -28,6 +28,7 @@ angular.module('goombaApp')
         img: "http://placeholdit.100x100",
         rating: 0,
         tags: [],
+        played: false,
       },
       getJSON : function() {
         return this.options; 

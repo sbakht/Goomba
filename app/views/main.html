@@ -1,12 +1,14 @@
 <div class="row marketing" ng-controller="MainCtrl">
 
-  <div ng-repeat="level in main.levelCollection.list">
+  <a ng-click="main.filtered = main.allLevels.filter({difficulty: 'Easy'})">Easy</a>
+  <a ng-click="main.filtered = main.allLevels.filter({difficulty: 'Medium'})">Medium</a>
+  <a ng-click="main.filtered = main.allLevels.filter({difficulty: 'Hard'})">Hard</a>
+  <div ng-repeat="level in main.filtered.list || main.allLevels.list">
   <h4>{{level.title}}</h4>
   <p>ID: {{level.ID}}</p>
   <p>Game: {{level.game}}</p>
   <p>Difficulty: {{level.difficulty}}</p>
 </div>
-
   <h4>{{main.test}}</h4>
   <p>
     HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
