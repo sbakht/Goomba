@@ -19,9 +19,11 @@ angular.module('goombaApp')
         this.ID = this.options.ID;
         this.game = this.options.game;
         this.difficulty = this.options.difficulty;
+        this.img = this.options.img;
       },
       options: {
-        difficulty: "Unknown"
+        difficulty: "Unknown",
+        img: "http://placeholdit.100x100",
       },
       getJSON : function() {
         return this.options; 
