@@ -401,10 +401,16 @@ module.exports = function (grunt) {
 
     // Test settings
     karma: {
-      unit: {
-        configFile: 'test/karma.conf.js',
-        singleRun: true
-      }
+       unit: {
+      configFile: 'test/karma.conf.js',
+      singleRun: true,
+      autoWatch: false
+    },
+    server: {
+      configFile: 'test/karma.conf.js',
+      singleRun: false,
+      autoWatch: true
+    }
     }
   });
 
