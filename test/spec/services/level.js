@@ -58,7 +58,7 @@ describe('Service: Level', function () {
     var tag = {};
     var level = Object.create(Level);
     level.init();
-    level.addTag(tag)
+    level.addTag(tag);
     expect(level.tags.length).toBe(1);
   });
 

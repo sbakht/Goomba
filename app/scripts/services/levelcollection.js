@@ -15,7 +15,7 @@ angular.module('goombaApp')
     var LevelCollection = {
       init : function(options) {
         this.list = [];
-        this.options = angular.extend({}, this.options, options)
+        this.options = angular.extend({}, this.options, options);
       },
       add : function(level) {
         this.list.push(level);
@@ -33,15 +33,24 @@ angular.module('goombaApp')
         return filtered;
       },
       _isMatch: function(level, filters) {
-          var match = true;
           for (var key in filters) {
             if (filters.hasOwnProperty(key)) {
-              if(level[key] != filters[key]) {
-                match = false;
+              if(!this._isEqual(level[key], filters[key])) {
+                return false;
               }
             }
           }
-          return match;
+          return true;
+      },
+      _isEqual: function(levelVal, filterVal) {
+        if(this._isArray(filterVal)) {
+          return filterVal.indexOf(levelVal) !== -1;
+        }else{
+          return levelVal == filterVal;
+        }
+      },
+      _isArray: function(obj) {
+        return Object.prototype.toString.call(obj) === '[object Array]';
       },
 
     };

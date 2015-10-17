@@ -14,11 +14,11 @@ angular.module('goombaApp')
 
     var Tag = {
       init: function(options) {
-        this.options = angular.extend({}, this.options, options)
+        this.options = angular.extend({}, this.options, options);
         this.title = this.options.title;
       },
 
-    }
+    };
 
     return Tag;
   });

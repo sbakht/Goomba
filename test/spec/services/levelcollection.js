@@ -5,11 +5,6 @@ describe('Service: LevelCollection', function () {
   // load the service's module
   beforeEach(module('goombaApp'));
 
-  var ObjectFactory;
-  beforeEach(inject(function(_ObjectFactory_) {
-    ObjectFactory = ObjectFactory;
-  }));
-
   // instantiate service
   var LevelCollection;
   var levelCollection;
@@ -41,11 +36,12 @@ describe('Service: LevelCollection', function () {
 
   describe("Filters", function() {
 
-    var level, level2, level3;
+    var level, level2, level3, level4;
     beforeEach(function() {
       level = {title: "My Easy Level", difficulty: "Easy"};
       level2 = {title: "My Medium Level", difficulty: "Medium"};
       level3 = {title: "My Other Medium Level", difficulty: "Medium"};
+      level4 = {title: "My Hard Level", difficulty: "Hard"};
       levelCollection.add(level);
       levelCollection.add(level2);
       levelCollection.add(level3);
@@ -58,6 +54,11 @@ describe('Service: LevelCollection', function () {
 
     it('should match a level to multiple filters', function () {
       var match = levelCollection._isMatch(level2, {title: "My Medium Level", difficulty: "Medium"});
+      expect(match).toBeTruthy();
+    });
+
+    it('should match a level to multiple filters of same type', function () {
+      var match = levelCollection._isMatch(level2, {difficulty: ["Medium", "Hard"]});
       expect(match).toBeTruthy();
     });
 
@@ -77,5 +78,27 @@ describe('Service: LevelCollection', function () {
       expect(filtered.list.length).toBe(2);
     });
 
+    it('should find matches to multiple filters of same type', function () {
+      var filtered = levelCollection.filter({difficulty: ["Medium", "Hard"]});
+      expect(filtered.list.length).toBe(2);
+    });
+
+  });
+  
+
+  it("should check for equal strings", function() {
+    expect(levelCollection._isEqual("string","string")).toBeTruthy();
+  });
+
+  it("should check for string in array", function() {
+    expect(levelCollection._isEqual("string",["string"])).toBeTruthy();
+  });
+
+  it("should check for is array", function() {
+    expect(levelCollection._isArray([])).toBeTruthy();
+  });
+
+  it("should check for is not array", function() {
+    expect(levelCollection._isArray("")).toBeFalsy();
   });
 });

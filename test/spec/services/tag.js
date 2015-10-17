@@ -22,6 +22,6 @@ describe('Service: Tag', function () {
     var tag = Object.create(Tag);
     tag.init({title: "Puzzle"});
     expect(tag.title).toBe("Puzzle");
-  })
+  });
 
 });
