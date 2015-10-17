@@ -1,9 +1,10 @@
 <div class="row marketing" ng-controller="MainCtrl">
 
-  <div ng-repeat="level in main.levelCollection.levels">
+  <div ng-repeat="level in main.levelCollection.list">
   <h4>{{level.title}}</h4>
   <p>ID: {{level.ID}}</p>
   <p>Game: {{level.game}}</p>
+  <p>Difficulty: {{level.difficulty}}</p>
 </div>
 
   <h4>{{main.test}}</h4>
