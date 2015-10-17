@@ -1,45 +1,45 @@
 <div class="row marketing" ng-controller="MainCtrl">
-  <div class="col-md-2">
-    <div>
+  <div class="col-md-4">
+    <div class="difficulty-list">
       <a ng-click="main.selectAllDifficulty()">All</a>
       <div class="difficulty-check">
-        <input type="checkbox" ng-model="main.difficulty.easy" ng-change="main.updateDifficultyFilter()">
+        <input type="checkbox" ng-model="main.filters.difficulty.Easy" ng-change="main.updateFilter()">
         <label>Easy</label>
       </div>
       <div class="difficulty-check">
-        <input type="checkbox" ng-model="main.difficulty.medium" ng-change="main.updateDifficultyFilter()">
+        <input type="checkbox" ng-model="main.filters.difficulty.Medium" ng-change="main.updateFilter()">
         <label>Medium</label>
       </div>
       <div class="difficulty-check">
-        <input type="checkbox" ng-model="main.difficulty.hard" ng-change="main.updateDifficultyFilter()">
+        <input type="checkbox" ng-model="main.filters.difficulty.Hard" ng-change="main.updateFilter()">
         <label>Hard</label>
       </div>
     </div>
-    <div>
+    <div class="game-list">
       <a ng-click="main.selectAllGame()">All</a>
       <div class="game-check">
-        <input type="checkbox" ng-model="main.game.smb" ng-change="main.updateGameFilter()">
+        <input type="checkbox" ng-model="main.filters.game.smb" ng-change="main.updateFilter()">
         <label>Super Mario Bros.</label>
       </div>
       <div class="game-check">
-        <input type="checkbox" ng-model="main.game.smb3" ng-change="main.updateGameFilter()">
+        <input type="checkbox" ng-model="main.filters.game.smb3" ng-change="main.updateFilter()">
         <label>Super Mario Bros. 3</label>
       </div>
       <div class="game-check">
-        <input type="checkbox" ng-model="main.game.smw" ng-change="main.updateGameFilter()">
+        <input type="checkbox" ng-model="main.filters.game.smw" ng-change="main.updateFilter()">
         <label>Super Mario World</label>
       </div>
       <div class="game-check">
-        <input type="checkbox" ng-model="main.game.smbu" ng-change="main.updateGameFilter()">
+        <input type="checkbox" ng-model="main.filters.game.smbu" ng-change="main.updateFilter()">
         <label>New Super Mario Bros. U</label>
       </div>
     </div>
   </div>
-  <div class="col-md-10">
+  <div class="col-md-8">
     <div ng-repeat="level in main.filtered.list || main.allLevels.list">
       <h4>{{level.title}}</h4>
       <p>ID: {{level.ID}}</p>
-      <p>Game: {{level.game}}</p>
+      <p>Game: {{level.getGameText()}}</p>
       <p>Difficulty: {{level.difficulty}}</p>
     </div>
     <p class="empty-results" ng-if="main.filtered.list.length == 0">No search results found :(</p>

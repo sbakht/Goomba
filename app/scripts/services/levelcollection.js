@@ -43,8 +43,8 @@ angular.module('goombaApp')
           return true;
       },
       _isEqual: function(levelVal, filterVal) {
-        if(this._isArray(filterVal)) {
-          return filterVal.indexOf(levelVal) !== -1;
+        if(typeof filterVal === 'object') {
+          return filterVal[levelVal] === true;
         }else{
           return levelVal === filterVal;
         }

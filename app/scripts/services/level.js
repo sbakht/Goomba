@@ -42,6 +42,20 @@ angular.module('goombaApp')
       addTag : function(tag) {
         this.tags.push(tag);
       },
+      getGameText: function() {
+        switch(this.game) {
+          case "smb":
+            return "Super Mario Bros.";
+          case "smb3":
+            return "Super Mario Bros. 3";
+          case "smw":
+            return "Super Mario World";
+          case "smbu":
+            return "New Super Mario Bros. U";
+          default:
+            return "Unknown";
+        }
+      },
 
     };
 

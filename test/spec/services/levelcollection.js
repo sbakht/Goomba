@@ -47,8 +47,14 @@ describe('Service: LevelCollection', function () {
       levelCollection.add(level3);
     });
 
-    it('should match a level to single filter', function () {
+    it('should match a level to single filter when string', function () {
       var match = levelCollection._isMatch(level, {difficulty: "Easy"});
+      expect(match).toBeTruthy();
+    });
+
+
+    it('should match a level to single filter when object', function () {
+      var match = levelCollection._isMatch(level, {difficulty: {Easy: true}});
       expect(match).toBeTruthy();
     });
 
@@ -58,7 +64,7 @@ describe('Service: LevelCollection', function () {
     });
 
     it('should match a level to multiple filters of same type', function () {
-      var match = levelCollection._isMatch(level2, {difficulty: ["Medium", "Hard"]});
+      var match = levelCollection._isMatch(level2, {difficulty: {Medium : true, "Hard" : true}});
       expect(match).toBeTruthy();
     });
 
@@ -79,19 +85,30 @@ describe('Service: LevelCollection', function () {
     });
 
     it('should find matches to multiple filters of same type', function () {
-      var filtered = levelCollection.filter({difficulty: ["Medium", "Hard"]});
+      var filtered = levelCollection.filter({difficulty: {"Medium": true, "Hard" : true}});
       expect(filtered.list.length).toBe(2);
     });
 
   });
   
 
-  it("should check for equal strings", function() {
-    expect(levelCollection._isEqual("string","string")).toBeTruthy();
-  });
+  describe("_isEqual", function() {
 
-  it("should check for string in array", function() {
-    expect(levelCollection._isEqual("string",["string"])).toBeTruthy();
+    it("should check for equal strings", function() {
+      expect(levelCollection._isEqual("string","string")).toBeTruthy();
+    });
+
+    it("should check for string in object when value true", function() {
+      expect(levelCollection._isEqual("string", {string: true})).toBeTruthy();
+    });
+
+    it("should check for string in object value when value false", function() {
+      expect(levelCollection._isEqual("string", {string: false})).toBeFalsy();
+    });
+      it("should check for string in object when no there", function() {
+      expect(levelCollection._isEqual("string", {})).toBeFalsy();
+    });
+
   });
 
   it("should check for is array", function() {

@@ -62,4 +62,16 @@ describe('Service: Level', function () {
     expect(level.tags.length).toBe(1);
   });
 
+  it("should convert shorthand game name to full names", function() {
+    var level = Object.create(Level);
+    level.init({game: "smb"});
+    expect(level.getGameText()).toBe("Super Mario Bros.");
+    level.init({game: "smb3"});
+    expect(level.getGameText()).toBe("Super Mario Bros. 3");
+    level.init({game: "smw"});
+    expect(level.getGameText()).toBe("Super Mario World");
+    level.init({game: "smbu"});
+    expect(level.getGameText()).toBe("New Super Mario Bros. U");
+  });
+
 });
