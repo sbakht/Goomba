@@ -8,7 +8,7 @@
  * Factory in the goombaApp.
  */
 angular.module('goombaApp')
-  .factory('Level', function () {
+  .factory('Level', function (Tag) {
     // Service logic
     // ...
 
@@ -22,6 +22,9 @@ angular.module('goombaApp')
         this.img = this.options.img;
         this.rating = this.options.rating;
         this.tags = this.options.tags;
+        if(this.tags.length == 0) {
+          this.tags = this.createDefaultTag();
+        }
       },
       options: {
         difficulty: "Unknown",
@@ -29,6 +32,11 @@ angular.module('goombaApp')
         rating: 0,
         tags: [],
         played: false,
+      },
+      createDefaultTag: function() {
+        var tag = Object.create(Tag);
+        tag.init({title: "Unspecified"});
+        return [tag];
       },
       getJSON : function() {
         return this.options; 

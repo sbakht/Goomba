@@ -35,7 +35,7 @@ describe('Service: Level', function () {
     it('tag should initialize to empty array', function() {
       var level = Object.create(Level);
       level.init();
-      expect(level.tags.length).toBe(0);
+      expect(level.tags.length).toBe(1);
     });
 
   });

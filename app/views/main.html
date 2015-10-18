@@ -34,6 +34,13 @@
         <label>New Super Mario Bros. U</label>
       </div>
     </div>
+    <div class="tag-list">
+      <a ng-click="main.selectAllTag()">All</a>
+      <div class="tag-check" ng-repeat="tag in main.filters.tags">
+        <input type="checkbox" ng-model="tag.checked" ng-change="main.updateFilter()">
+        <label>{{tag.title}}</label>
+      </div>
+    </div>
   </div>
   <div class="col-md-8">
     <div ng-repeat="level in main.filtered.list || main.allLevels.list">
@@ -41,6 +48,7 @@
       <p>ID: {{level.ID}}</p>
       <p>Game: {{level.getGameText()}}</p>
       <p>Difficulty: {{level.difficulty}}</p>
+      <p>Tags: {{level.tags}}</p>
     </div>
     <p class="empty-results" ng-if="main.filtered.list.length == 0">No search results found :(</p>
   </div>

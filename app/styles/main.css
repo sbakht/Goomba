@@ -90,6 +90,6 @@ div.difficulty-check label{
 p.empty-results {
   font-style: italic;
 }
-div.difficulty-list {
+div.difficulty-list, div.game-list {
   margin-bottom: 10px;
 }

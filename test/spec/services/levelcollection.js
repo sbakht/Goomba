@@ -8,11 +8,20 @@ describe('Service: LevelCollection', function () {
   // instantiate service
   var LevelCollection;
   var levelCollection;
-  beforeEach(inject(function (_LevelCollection_) {
+  var Tag;
+  var puzzleTag;
+  var playsItselfTag;
+  beforeEach(inject(function (_LevelCollection_, _Tag_) {
     LevelCollection = _LevelCollection_;
+    Tag = _Tag_;
 
     levelCollection = Object.create(LevelCollection);
     levelCollection.init();
+
+    puzzleTag = Object.create(Tag);
+    puzzleTag.init({title: "Puzzle", checked: true});
+    playsItselfTag = Object.create(Tag);
+    playsItselfTag.init({title: "Don't Move", checked:true});
   }));
 
   it('should create a LevelCollection', function () {
@@ -38,9 +47,9 @@ describe('Service: LevelCollection', function () {
 
     var level, level2, level3, level4;
     beforeEach(function() {
-      level = {title: "My Easy Level", difficulty: "Easy"};
-      level2 = {title: "My Medium Level", difficulty: "Medium"};
-      level3 = {title: "My Other Medium Level", difficulty: "Medium"};
+      level = {title: "My Easy Level", difficulty: "Easy", tags: [puzzleTag]};
+      level2 = {title: "My Medium Level", difficulty: "Medium", tags: [playsItselfTag]};
+      level3 = {title: "My Other Medium Level", difficulty: "Medium", tags: [puzzleTag, playsItselfTag]};
       level4 = {title: "My Hard Level", difficulty: "Hard"};
       levelCollection.add(level);
       levelCollection.add(level2);
@@ -68,6 +77,16 @@ describe('Service: LevelCollection', function () {
       expect(match).toBeTruthy();
     });
 
+    it("should match a level based on single tag", function() {
+      var match = levelCollection._isMatch(level, {tags: [puzzleTag]});
+      expect(match).toBeTruthy();
+    });
+
+    it("should match a level based on multiple tags", function() {
+      var match = levelCollection._isMatch(level2, {tags: [puzzleTag, playsItselfTag]});
+      expect(match).toBeTruthy();
+    });
+
     it('should not find a match', function () {
       var match = levelCollection._isMatch(level2, {title: "Non Existant", difficulty: "Medium"});
       expect(match).toBeFalsy();
@@ -88,6 +107,12 @@ describe('Service: LevelCollection', function () {
       var filtered = levelCollection.filter({difficulty: {"Medium": true, "Hard" : true}});
       expect(filtered.list.length).toBe(2);
     });
+
+    it("should find matches based on multiple tags", function() {
+      var filtered = levelCollection.filter({tags: [puzzleTag, playsItselfTag]});
+      expect(filtered.length).toBe(3);
+    });
+
 
   });
   
@@ -116,6 +141,7 @@ describe('Service: LevelCollection', function () {
   });
 
   it("should check for is not array", function() {
-    expect(levelCollection._isArray("")).toBeFalsy();
+    expect(levelCollection._isArray({})).toBeFalsy();
   });
+
 });

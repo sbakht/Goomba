@@ -43,7 +43,19 @@ angular.module('goombaApp')
           return true;
       },
       _isEqual: function(levelVal, filterVal) {
-        if(typeof filterVal === 'object') {
+        if(this._isArray(filterVal)) { //tags
+          for(var y = 0; y < levelVal.length; y++) {
+            var title = levelVal[y].title;
+            for(var z = 0; z < filterVal.length; z++) {
+              if(filterVal[z].title == title) {
+                if(filterVal[z].checked) {
+                  return true;
+                }
+              }
+            }
+          }
+          return false;
+        }else if(typeof filterVal === 'object') {
           return filterVal[levelVal] === true;
         }else{
           return levelVal === filterVal;
