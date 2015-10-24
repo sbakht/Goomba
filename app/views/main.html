@@ -46,21 +46,29 @@
     </div>
   </div>
   <div class="col-md-9">
-    <div class="level bg-success" ng-repeat="level in main.filtered.list || main.allLevels.list">
+
+    <div class="panel panel-primary level bg-success" ng-repeat="level in main.filtered.list || main.allLevels.list">
+      <div class="panel-heading">
       <img class="logo" ng-if= "level.game == 'smw'" src="images/smw-logo.png" /> 
       <img class="logo" ng-if= "level.game == 'smb'" src="images/smb-logo.png" /> 
       <img class="logo" ng-if= "level.game == 'smb3'" src="images/smb3-logo.png" /> 
       <img class="logo" ng-if= "level.game == 'smbu'" src="images/smbu-logo.png" /> 
       <h3 class="title">{{level.title}}</h3>
+    </div>
+    <div class="panel-body">
       <p class="id">{{level.ID}}</p>
       <div class="thumbs">
         <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
         <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
       </div>
       <span class="points">{{level.points > 0 ? "+" + level.points : level.points}}</span>
-      <p style="clear:both">Game: {{level.getGameText()}}</p>
-      <p>Difficulty: {{level.difficulty}}</p>
+      <div class="completed">
+          <input type="checkbox" >
+          <label>Completed</label>
+      </div>
+      <p style="clear:both">Difficulty: {{level.difficulty}}</p>
       <p>Tags: {{level.tags}}</p>
+    </div>
     </div>
     <p class="empty-results" ng-if="main.filtered.list.length == 0">No search results found :(</p>
   </div>
