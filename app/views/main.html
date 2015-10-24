@@ -63,10 +63,10 @@
       </div>
       <span class="points">{{level.points > 0 ? "+" + level.points : level.points}}</span>
       <div class="completed">
-          <input type="checkbox" >
+          <input type="checkbox" ng-model="level.completed">
           <label>Completed</label>
       </div>
-      <p style="clear:both">Difficulty: {{level.difficulty}}</p>
+      <p style="clear:none">Difficulty: {{level.difficulty}}</p>
       <p>Tags: {{level.tags}}</p>
     </div>
     </div>
