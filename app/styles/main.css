@@ -126,6 +126,8 @@ p.empty-results {
 
 .level .panel-heading {
   cursor: pointer;
+  padding-right:6px;
+  padding-left:6px;
 }
 
 .level .panel-body {
@@ -146,6 +148,12 @@ p.empty-results {
 
 .level p {
   color: #333;
+}
+
+.level span.difficulty {
+  float:left;
+  font-size: 18px;
+  padding-left: 6px;
 }
 
 .level p.id {

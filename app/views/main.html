@@ -56,6 +56,7 @@
         <h3 class="title">{{level.title}}</h3>
       </div>
       <div class="panel-body">
+        <span class="difficulty text-success">{{level.difficulty}}</span>
         <p class="id">{{level.ID}}</p>
         <div class="thumbs">
           <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
@@ -66,7 +67,6 @@
             <input type="checkbox" ng-model="level.completed">
             <label>Completed</label>
         </div>
-        <p style="clear:none">Difficulty: {{level.difficulty}}</p>
         <div class="tags">
           <button type="button" class="btn btn-info btn-xs tag" ng-repeat="tag in level.tags">{{tag.title}}</button>
         </div>
