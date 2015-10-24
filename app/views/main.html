@@ -1,7 +1,8 @@
 <div class="row marketing" ng-controller="MainCtrl">
-  <div class="col-md-4">
+  <div class="col-md-4" id="sidebar">
     <div class="difficulty-list">
-      <a ng-click="main.selectAllDifficulty()">All</a>
+      <h5>Difficulty</h5>
+      <a ng-click="main.selectAllDifficulty()">Select All</a>
       <div class="difficulty-check">
         <input type="checkbox" ng-model="main.filters.difficulty.Easy" ng-change="main.updateFilter()">
         <label>Easy</label>
@@ -16,18 +17,19 @@
       </div>
     </div>
     <div class="game-list">
-      <a ng-click="main.selectAllGame()">All</a>
+      <h5>Game</h5>
+      <a ng-click="main.selectAllGame()">Select All</a>
       <div class="game-check">
         <input type="checkbox" ng-model="main.filters.game.smb" ng-change="main.updateFilter()">
         <label>Super Mario Bros.</label>
       </div>
       <div class="game-check">
-        <input type="checkbox" ng-model="main.filters.game.smb3" ng-change="main.updateFilter()">
-        <label>Super Mario Bros. 3</label>
-      </div>
-      <div class="game-check">
         <input type="checkbox" ng-model="main.filters.game.smw" ng-change="main.updateFilter()">
         <label>Super Mario World</label>
+      </div>
+      <div class="game-check">
+        <input type="checkbox" ng-model="main.filters.game.smb3" ng-change="main.updateFilter()">
+        <label>Super Mario Bros. 3</label>
       </div>
       <div class="game-check">
         <input type="checkbox" ng-model="main.filters.game.smbu" ng-change="main.updateFilter()">
@@ -35,7 +37,8 @@
       </div>
     </div>
     <div class="tag-list">
-      <a ng-click="main.selectAllTag()">All</a>
+      <h5>Tags</h5>
+      <a ng-click="main.selectAllTag()">Select All</a>
       <div class="tag-check" ng-repeat="tag in main.filters.tags">
         <input type="checkbox" ng-model="tag.checked" ng-change="main.updateFilter()">
         <label>{{tag.title}}</label>
@@ -43,7 +46,7 @@
     </div>
   </div>
   <div class="col-md-8">
-    <div ng-repeat="level in main.filtered.list || main.allLevels.list">
+    <div class="level" ng-repeat="level in main.filtered.list || main.allLevels.list">
       <h4>{{level.title}}</h4>
       <p>ID: {{level.ID}}</p>
       <p>Game: {{level.getGameText()}}</p>

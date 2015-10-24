@@ -82,14 +82,40 @@ body {
   }
 }
 
-
-div.difficulty-check label{
+/* Sidebar */
+#sidebar label {
+  font-size: 12px;
+  font-weight: normal;
   vertical-align: top;
 }
+
+#sidebar a {
+  display: block;
+  font-size: 12px;
+  padding-bottom: 6px;
+}
+
+#sidebar h5 {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+#sidebar div.difficulty-list, div.game-list {
+  margin-bottom: 10px;
+}
+
 
 p.empty-results {
   font-style: italic;
 }
-div.difficulty-list, div.game-list {
-  margin-bottom: 10px;
+
+
+/* Level */
+.level h4 {
+  color: #000;
 }
+
+.level p {
+  color: #333;
+}
+
