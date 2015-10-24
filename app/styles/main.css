@@ -115,10 +115,16 @@ p.empty-results {
   padding: 6px;
   margin-bottom: 6px;
 }
-.level h3 {
+.level h3.title {
   color: #000;
   margin: 0;
   text-align: right;
+}
+
+.level img.logo {
+  float:left;
+  width:100px;
+  height:30px;
 }
 
 .level p {
