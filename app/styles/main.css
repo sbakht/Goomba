@@ -111,11 +111,37 @@ p.empty-results {
 
 
 /* Level */
-.level h4 {
+.level {
+  padding: 6px;
+  margin-bottom: 6px;
+}
+.level h3 {
   color: #000;
+  margin: 0;
+  text-align: right;
 }
 
 .level p {
   color: #333;
+}
+
+.level p.id {
+  text-align: right;
+}
+.level div.thumbs {
+  float:right;
+}
+
+.level span.glyphicon {
+  display: block;
+  text-align: right;
+  font-size: 24px;
+}
+.level span.points {
+  color: #666;
+  float:right;
+  font-size: 24px;
+  margin-right: 6px;
+  margin-top: 8px;
 }
 

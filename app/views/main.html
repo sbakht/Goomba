@@ -1,5 +1,5 @@
 <div class="row marketing" ng-controller="MainCtrl">
-  <div class="col-md-4" id="sidebar">
+  <div class="col-md-3" id="sidebar">
     <div class="difficulty-list">
       <h5>Difficulty</h5>
       <a ng-click="main.selectAllDifficulty()">Select All</a>
@@ -45,11 +45,16 @@
       </div>
     </div>
   </div>
-  <div class="col-md-8">
-    <div class="level" ng-repeat="level in main.filtered.list || main.allLevels.list">
-      <h4>{{level.title}}</h4>
-      <p>ID: {{level.ID}}</p>
-      <p>Game: {{level.getGameText()}}</p>
+  <div class="col-md-9">
+    <div class="level bg-success" ng-repeat="level in main.filtered.list || main.allLevels.list">
+      <h3>{{level.title}}</h3>
+      <p class="id">{{level.ID}}</p>
+      <div class="thumbs">
+        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+        <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+      </div>
+      <span class="points">{{level.points > 0 ? "+" + level.points : level.points}}</span>
+      <p style="clear:both">Game: {{level.getGameText()}}</p>
       <p>Difficulty: {{level.difficulty}}</p>
       <p>Tags: {{level.tags}}</p>
     </div>

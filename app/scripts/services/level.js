@@ -22,6 +22,7 @@ angular.module('goombaApp')
         this.img = this.options.img;
         this.rating = this.options.rating;
         this.tags = this.options.tags;
+        this.points = this.options.points;
         if(this.tags.length == 0) {
           this.tags = this.createDefaultTag();
         }
