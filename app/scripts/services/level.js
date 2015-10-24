@@ -30,7 +30,7 @@ angular.module('goombaApp')
       },
       options: {
         difficulty: "Unknown",
-        img: "http://placeholdit.100x100",
+        img: "",
         rating: 0,
         tags: [],
         played: false,

@@ -182,9 +182,18 @@ p.empty-results {
   padding-top: 6px;
 }
 
-.level div.completed label{
+.level div.completed label {
   font-weight: normal;
   vertical-align: top;
+}
+
+.level img.levelimg {
+  padding-left:6px
+}
+
+.level p.description {
+  width:75%;
+  padding-left:6px
 }
 
 .level div.tags {

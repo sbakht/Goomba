@@ -67,6 +67,8 @@
             <input type="checkbox" ng-model="level.completed">
             <label>Completed</label>
         </div>
+        <img class="levelimg" ng-if="level.img" ng-src="{{level.img}}" />
+        <p class="description">Phasellus laoreet est nec turpis dignissim, nec lobortis elit pretium. Nulla egestas euismod elit, eu vulputate tellus bibendum a. Praesent consequat mi nec vulputate <a style="font-size:12px;">Read More...</a></p>
         <div class="tags">
           <button type="button" class="btn btn-info btn-xs tag" ng-repeat="tag in level.tags">{{tag.title}}</button>
         </div>
