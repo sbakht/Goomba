@@ -13,22 +13,25 @@ angular.module('goombaApp')
   	var emptyTag = ObjectFactory.createTag({title: "Unspecified"});
   	var puzzleTag = ObjectFactory.createTag({title: "Puzzle"});
   	var playsItselfTag = ObjectFactory.createTag({title: "Don't Move"});
-  	var tags = [puzzleTag];
-  	var tags2 = [puzzleTag];
-  	// this.tagList = [puzzleTag, playsItselfTag];
+  	var classicTag = ObjectFactory.createTag({title: "Classic"});
+  	var singleScreenTag = ObjectFactory.createTag({title: "Single Screen"});
+  	var fastTag = ObjectFactory.createTag({title: "Fast"});
+  	var storyTag = ObjectFactory.createTag({title: "Story"});
+  	var remakeTag = ObjectFactory.createTag({title: "Remake"});
+  	var costumeTag = ObjectFactory.createTag({title: "Costume"});
 
 	this.allLevels = ObjectFactory.createLevelCollection();
-	var level = ObjectFactory.createLevel({title: "Mario Land", ID:"123-456", game: "smw", difficulty: "Medium", tags: [puzzleTag]});
-	var level2 = ObjectFactory.createLevel({title: "Yoshi World", ID:"456-433", game: "smb", difficulty: "Easy", tags: [playsItselfTag]});
-	var level3 = ObjectFactory.createLevel({title: "Molly's Mushers", ID:"123-456", game: "smb3", difficulty: "Medium", tags:[puzzleTag, playsItselfTag]});
-	var level4 = ObjectFactory.createLevel({title: "Impossible Feat", ID:"343-522", game: "smbu", difficulty: "Hard"});
+	var level = ObjectFactory.createLevel({title: "Mario Land", ID:"2E04-0000-0047-F484", game: "smw", difficulty: "Medium", tags: [puzzleTag]});
+	var level2 = ObjectFactory.createLevel({title: "Yoshi World", ID:"389C-0000-0039-13DE", game: "smb", difficulty: "Easy", tags: [playsItselfTag]});
+	var level3 = ObjectFactory.createLevel({title: "Molly's Mushers", ID:"DEFD-0000-0047-F272", game: "smb3", difficulty: "Medium", tags:[puzzleTag, playsItselfTag]});
+	var level4 = ObjectFactory.createLevel({title: "Impossible Feat", ID:"C141-0000-007B-1615", game: "smbu", difficulty: "Hard"});
 	this.allLevels.add(level);
 	this.allLevels.add(level2);
 	this.allLevels.add(level3);
 	this.allLevels.add(level4);
 	level2.options.title = "Changing title from options.title";
 	this.filters = {game: {}, difficulty: {}, tags: []};
-	this.filters.tags = [emptyTag, puzzleTag, playsItselfTag];
+	this.filters.tags = [emptyTag, puzzleTag, playsItselfTag, classicTag, fastTag, storyTag, singleScreenTag, remakeTag, costumeTag];
 
 	this.updateFilter = function() {
 		// console.log(this.filters);
