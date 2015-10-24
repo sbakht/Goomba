@@ -98,7 +98,7 @@ body {
 }
 
 #sidebar a {
-  display: block;
+  display: inline;
   font-size: 12px;
   padding-bottom: 6px;
 }

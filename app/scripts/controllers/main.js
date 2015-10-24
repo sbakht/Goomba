@@ -38,10 +38,23 @@ angular.module('goombaApp')
 		this.filtered = this.allLevels.filter(this.filters);
 		// console.log(this.filtered);
 	};
+	this.deselectAllDifficulty = function() {
+		this.filters.difficulty.Easy = false;
+		this.filters.difficulty.Medium = false;
+		this.filters.difficulty.Hard = false;
+		this.updateFilter();
+	};
 	this.selectAllDifficulty = function() {
 		this.filters.difficulty.Easy = true;
 		this.filters.difficulty.Medium = true;
 		this.filters.difficulty.Hard = true;
+		this.updateFilter();
+	};
+	this.deselectAllGame = function() {
+		this.filters.game.smb = false;
+		this.filters.game.smb3 = false;
+		this.filters.game.smw = false;
+		this.filters.game.smbu = false;
 		this.updateFilter();
 	};
 	this.selectAllGame = function() {
@@ -49,6 +62,12 @@ angular.module('goombaApp')
 		this.filters.game.smb3 = true;
 		this.filters.game.smw = true;
 		this.filters.game.smbu = true;
+		this.updateFilter();
+	};
+	this.deselectAllTag = function() {
+		for(var i = 0; i < this.filters.tags.length; i++) {
+			this.filters.tags[i].checked = false;
+		}
 		this.updateFilter();
 	};
 	this.selectAllTag = function() {
