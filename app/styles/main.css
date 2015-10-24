@@ -124,6 +124,10 @@ p.empty-results {
   margin-bottom: 6px;
 }
 
+.level .panel-heading {
+  cursor: pointer;
+}
+
 .level .panel-body {
   padding: 0px;
   padding-top: 6px;
@@ -175,3 +179,10 @@ p.empty-results {
   vertical-align: top;
 }
 
+.level div.tags {
+  clear:both;
+}
+
+.level div.tags .tag {
+  margin-right: 6px;
+}
