@@ -61,12 +61,90 @@ angular.module('goombaApp')
       collection.add(level2);
       collection.add(level3);
       collection.add(level4);
+      level = createRandomLevel();
+      collection.add(level);
 
       return collection;
     }
 
     function populateTagList() {
       return [emptyTag, puzzleTag, playsItselfTag, classicTag, fastTag, storyTag, singleScreenTag, remakeTag, costumeTag];
+    }
+
+
+    function createRandomLevel() {
+      var obj = {
+        title: chance.sentence({words: 5}), 
+        ID: createRandomID(),
+        game: createRandomGame(), 
+        difficulty: createRandomDifficulty(), 
+        tags: [puzzleTag], 
+        points: getRandomInt(0,26), 
+        description: chance.paragraph()
+      };
+
+      var level = createLevel(obj);
+      return level;
+    }
+
+    function createRandomID() {
+      var id = "";
+      for(var i = 0; i < 19; i++) {
+        if(i == 4 || i == 9 || i == 14) {
+          id += "-";
+        }else if(i > 4 && i < 9) {
+          id += "0";
+        }else{
+          var rand = getRandomInt(0,2);
+          if(rand == 0) {
+            id += chance.character({alpha: true, casing: "upper"});
+          }else{
+            id += chance.integer({min: 0, max: 9});
+          }
+        }
+      }
+      return id;
+    }
+
+    function createRandomGame() {
+      var game;
+      var rand = getRandomInt(0,4);
+      switch(rand) {
+        case 0:
+          game = "smb";
+          break;
+        case 1:
+          game = "smb3";
+          break;
+        case 2:
+          game = "smw";
+          break;
+        case 3:
+          game = "smbu";
+          break;
+      }
+      return game;
+    }
+
+    function createRandomDifficulty() {
+      var difficulty;
+      var rand = getRandomInt(0,4);
+      switch(rand) {
+        case 0:
+          difficulty = "Easy";
+          break;
+        case 1:
+          difficulty = "Medium";
+          break;
+        case 2:
+          difficulty = "Hard";
+          break;
+      }
+      return difficulty;
+    }
+
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min)) + min;
     }
 
     // Public API here
