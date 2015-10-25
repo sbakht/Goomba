@@ -12,7 +12,7 @@ angular.module('goombaApp')
 
   	this.currentPage = 1;
 
-	this.allLevels = ObjectFactory.populateLevelCollection();
+	this.allLevels = ObjectFactory.getPopulatedLevelCollection();
 	this.filters = {game: {}, difficulty: {}, tags: []};
 	this.filters.tags = ObjectFactory.populateTagList();
 

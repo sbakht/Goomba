@@ -11,9 +11,8 @@ angular.module('goombaApp')
   .factory('ObjectFactory', function (Level, LevelCollection, Tag) {
     // Service logic
     // ...
-
+    var collection = createLevelCollection();
     var img = "http://placehold.it/100x100";
-
     var description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam libero ligula, sagittis faucibus elementum eget, congue eget justo. Maecenas vitae hendrerit massa. Mauris a cursus nulla, ac placerat eros. Duis sit amet odio ipsum. Nulla scelerisque blandit facilisis. Nulla pulvinar nec elit nec ultrices. Vestibulum posuere ipsum et lacus rutrum sagittis ac vel sapien. Aliquam at ipsum sagittis neque dignissim sodales. Quisque tempor est vel dui cursus, vitae fringilla dui bibendum. Praesent sit amet gravida urna. In tincidunt lobortis purus, sit amet venenatis ipsum sodales sit amet. Aenean rutrum finibus aliquet. Nulla euismod tellus justo, ac fringilla ipsum aliquam quis. Etiam varius elit nibh, vel pulvinar nisi dignissim a. Maecenas lacinia id mi at viverra. Aliquam erat volutpat.";
 
     var emptyTag = createTag({title: "Unspecified"});
@@ -52,11 +51,10 @@ angular.module('goombaApp')
     }
 
     function populateLevelCollection() {
-      var collection = this.createLevelCollection();
-      var level = this.createLevel(levels[0]);
-      var level2 = this.createLevel(levels[1]);
-      var level3 = this.createLevel(levels[2]);
-      var level4 = this.createLevel(levels[3]);
+      var level = createLevel(levels[0]);
+      var level2 = createLevel(levels[1]);
+      var level3 = createLevel(levels[2]);
+      var level4 = createLevel(levels[3]);
       collection.add(level);
       collection.add(level2);
       collection.add(level3);
@@ -190,11 +188,16 @@ angular.module('goombaApp')
       }
     }
 
+    function getPopulatedLevelCollection() {
+      return collection;
+    }
+
     function getRandomInt(min, max) {
       return Math.floor(Math.random() * (max - min)) + min;
     }
 
     arrayIncludePolyfill();
+    populateLevelCollection();
 
     // Public API here
     return {
@@ -203,5 +206,6 @@ angular.module('goombaApp')
       createTag: createTag,
       populateLevelCollection: populateLevelCollection,
       populateTagList: populateTagList,
+      getPopulatedLevelCollection: getPopulatedLevelCollection
     };
   });

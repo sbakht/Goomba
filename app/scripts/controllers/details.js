@@ -12,7 +12,7 @@ angular.module('goombaApp')
 
   	var id = $routeParams.ID;
 
-	this.allLevels = ObjectFactory.populateLevelCollection();
+	this.allLevels = ObjectFactory.getPopulatedLevelCollection();
 	this.filters = {game: {}, difficulty: {}, tags: []};
 	this.filters.tags = ObjectFactory.populateTagList();
 	this.filters = {ID: id};
