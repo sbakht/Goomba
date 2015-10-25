@@ -135,9 +135,13 @@ p.empty-results {
   padding-top: 6px;
 }
 .level h3.title {
-  color: #000;
+  color: #c7dcef;
   margin: 0;
   text-align: right;
+}
+
+.level h3.title a {
+  color: #c7dcef;
 }
 
 .level img.logo {
