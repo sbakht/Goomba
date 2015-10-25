@@ -47,7 +47,7 @@
   </div>
   <div class="col-md-9">
 
-    <div class="panel panel-primary level bg-success" ng-repeat="level in main.filtered.list || main.allLevels.list">
+    <div class="panel panel-primary level bg-success" dir-paginate="level in main.filtered.list || main.allLevels.list | itemsPerPage: 10" current-page="main.currentPage" >
       <div class="panel-heading">
         <img class="logo" ng-if= "level.game == 'smw'" src="images/smw-logo.png" /> 
         <img class="logo" ng-if= "level.game == 'smb'" src="images/smb-logo.png" /> 
@@ -75,5 +75,6 @@
       </div>
     </div>
     <p class="empty-results" ng-if="main.filtered.list.length == 0">No search results found :(</p>
+    <dir-pagination-controls boundary-links="true" template-url="dirPagination.tpl.html"></dir-pagination-controls>
   </div>
 </div>

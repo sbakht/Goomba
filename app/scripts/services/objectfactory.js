@@ -62,7 +62,7 @@ angular.module('goombaApp')
       collection.add(level3);
       collection.add(level4);
 
-      for(var i = 0; i < 100; i++) {
+      for(var i = 0; i < 50; i++) {
         level = createRandomLevel();
         collection.add(level);
       }
@@ -145,8 +145,6 @@ angular.module('goombaApp')
       }
       return difficulty;
     }
-
-
 
     function createRandomTags() {
       var tags = [];

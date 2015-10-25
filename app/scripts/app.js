@@ -13,7 +13,8 @@ angular
     'ngAnimate',
     'ngCookies',
     'ngResource',
-    'ngRoute'
+    'ngRoute',
+    'angularUtils.directives.dirPagination',
   ])
   .config(function ($routeProvider) {
     $routeProvider
