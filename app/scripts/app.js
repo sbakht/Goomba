@@ -27,6 +27,11 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/:ID', {
+        templateUrl: 'views/details.html',
+        controller: 'DetailsCtrl',
+        controllerAs: 'main'
+      })
       .otherwise({
         redirectTo: '/'
       });

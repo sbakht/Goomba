@@ -188,7 +188,8 @@ p.empty-results {
 }
 
 .level img.levelimg {
-  padding-left:6px
+  padding-left:6px;
+  margin-bottom:10px;
 }
 
 .level p.description {
@@ -198,6 +199,7 @@ p.empty-results {
 
 .level div.tags {
   clear:both;
+  padding-left: 6px;
 }
 
 .level div.tags .tag {

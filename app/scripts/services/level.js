@@ -24,6 +24,7 @@ angular.module('goombaApp')
         this.tags = this.options.tags;
         this.points = this.options.points;
         this.completed = this.options.completed;
+        this.description = this.options.description;
         if(this.tags.length == 0) {
           this.tags = this.createDefaultTag();
         }
@@ -66,7 +67,9 @@ angular.module('goombaApp')
             return "Unknown";
         }
       },
-
+      shortenDescription: function() {
+        return this.description.substring(0,200);
+      },
     };
 
     return Level;

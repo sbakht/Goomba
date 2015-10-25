@@ -2,13 +2,15 @@
 
 /**
  * @ngdoc function
- * @name goombaApp.controller:MainCtrl
+ * @name goombaApp.controller:DetailsCtrl
  * @description
- * # MainCtrl
+ * # DetailsCtrl
  * Controller of the goombaApp
  */
 angular.module('goombaApp')
-  .controller('MainCtrl', function ($scope, Level, LevelCollection, ObjectFactory, Tag) {
+  .controller('DetailsCtrl', function ($routeParams, Level, LevelCollection, ObjectFactory, Tag) {
+
+  	var id = $routeParams.ID;
 
   	var emptyTag = ObjectFactory.createTag({title: "Unspecified"});
   	var puzzleTag = ObjectFactory.createTag({title: "Puzzle"});
@@ -34,52 +36,10 @@ angular.module('goombaApp')
 	this.allLevels.add(level3);
 	this.allLevels.add(level4);
 	level2.options.title = "Changing title from options.title";
-	this.filters = {game: {}, difficulty: {}, tags: []};
-	this.filters.tags = [emptyTag, puzzleTag, playsItselfTag, classicTag, fastTag, storyTag, singleScreenTag, remakeTag, costumeTag];
+	this.filters = {ID: id};
 
 	this.updateFilter = function() {
-		this.filtered = this.allLevels.filter(this.filters);
+		this.filtered = this.allLevels.filter({ID: id});
 	};
-	this.deselectAllDifficulty = function() {
-		this.filters.difficulty.Easy = false;
-		this.filters.difficulty.Medium = false;
-		this.filters.difficulty.Hard = false;
 		this.updateFilter();
-	};
-	this.selectAllDifficulty = function() {
-		this.filters.difficulty.Easy = true;
-		this.filters.difficulty.Medium = true;
-		this.filters.difficulty.Hard = true;
-		this.updateFilter();
-	};
-	this.deselectAllGame = function() {
-		this.filters.game.smb = false;
-		this.filters.game.smb3 = false;
-		this.filters.game.smw = false;
-		this.filters.game.smbu = false;
-		this.updateFilter();
-	};
-	this.selectAllGame = function() {
-		this.filters.game.smb = true;
-		this.filters.game.smb3 = true;
-		this.filters.game.smw = true;
-		this.filters.game.smbu = true;
-		this.updateFilter();
-	};
-	this.deselectAllTag = function() {
-		for(var i = 0; i < this.filters.tags.length; i++) {
-			this.filters.tags[i].checked = false;
-		}
-		this.updateFilter();
-	};
-	this.selectAllTag = function() {
-		for(var i = 0; i < this.filters.tags.length; i++) {
-			this.filters.tags[i].checked = true;
-		}
-		this.updateFilter();
-	};
-	this.selectAllDifficulty();
-	this.selectAllGame();
-	this.selectAllTag();
-
   });
