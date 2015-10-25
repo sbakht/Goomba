@@ -61,8 +61,11 @@ angular.module('goombaApp')
       collection.add(level2);
       collection.add(level3);
       collection.add(level4);
-      level = createRandomLevel();
-      collection.add(level);
+
+      for(var i = 0; i < 100; i++) {
+        level = createRandomLevel();
+        collection.add(level);
+      }
 
       return collection;
     }
@@ -78,7 +81,7 @@ angular.module('goombaApp')
         ID: createRandomID(),
         game: createRandomGame(), 
         difficulty: createRandomDifficulty(), 
-        tags: [puzzleTag], 
+        tags: createRandomTags(), 
         points: getRandomInt(0,26), 
         description: chance.paragraph()
       };
@@ -143,9 +146,57 @@ angular.module('goombaApp')
       return difficulty;
     }
 
+
+
+    function createRandomTags() {
+      var tags = [];
+      var tagList = populateTagList();
+      var rand = getRandomInt(0,6);
+      for(var i = 0; i < rand; i++) {
+        var tag = tagList[getRandomInt(0,tagList.length)];
+        if(!tags.includes(tag)) {
+          tags.push(tag);
+        }
+      }
+      return tags;
+    }
+
+    function arrayIncludePolyfill() {
+      if (!Array.prototype.includes) {
+        Array.prototype.includes = function(searchElement /*, fromIndex*/ ) {
+          'use strict';
+          var O = Object(this);
+          var len = parseInt(O.length) || 0;
+          if (len === 0) {
+            return false;
+          }
+          var n = parseInt(arguments[1]) || 0;
+          var k;
+          if (n >= 0) {
+            k = n;
+          } else {
+            k = len + n;
+            if (k < 0) {k = 0;}
+          }
+          var currentElement;
+          while (k < len) {
+            currentElement = O[k];
+            if (searchElement === currentElement ||
+               (searchElement !== searchElement && currentElement !== currentElement)) {
+              return true;
+            }
+            k++;
+          }
+          return false;
+        };
+      }
+    }
+
     function getRandomInt(min, max) {
       return Math.floor(Math.random() * (max - min)) + min;
     }
+
+    arrayIncludePolyfill();
 
     // Public API here
     return {
