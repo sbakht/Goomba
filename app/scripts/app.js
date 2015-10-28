@@ -28,6 +28,11 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/create', {
+        templateUrl: 'views/create.html',
+        controller: 'CreateCtrl',
+        controllerAs: 'create'
+      })
       .when('/:ID', {
         templateUrl: 'views/details.html',
         controller: 'DetailsCtrl',
