@@ -209,3 +209,13 @@ p.empty-results {
 .level div.tags .tag {
   margin-right: 6px;
 }
+
+
+.createForm label {
+  display: block;
+  margin-bottom: 0;
+}
+
+.inputTitle, .inputID, .inputGame, .inputDifficulty {
+  margin-bottom: 6px;
+}
