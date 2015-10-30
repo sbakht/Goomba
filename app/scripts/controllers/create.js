@@ -21,7 +21,7 @@ angular.module('goombaApp')
   	};
 
   	function validateInput() {
-
+      return true;
   	}
 
   });

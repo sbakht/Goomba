@@ -211,11 +211,32 @@ p.empty-results {
 }
 
 
-.createForm label {
+.css-form label {
   display: block;
   margin-bottom: 0;
 }
 
-.inputTitle, .inputID, .inputGame, .inputDifficulty {
+.input-title, .input-id, .input-game, .input-difficulty {
   margin-bottom: 6px;
+}
+
+.input-description {
+  margin-bottom: 18px;
+}
+
+.css-form input.ng-invalid.ng-dirty {
+  background-color: #FA787E;
+}
+
+.css-form input.ng-valid.ng-dirty {
+  background-color: #78FA89;
+}
+
+.css-form .error span {
+  color:#FA787E;
+}
+
+.css-form .input-id input {
+  display: inline-block;
+  width:20%;
 }

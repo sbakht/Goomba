@@ -1,34 +1,45 @@
 <div class="row">
 	<div class="col-md-6 col-md-offset-3 createForm">
-		<div class="inputTitle">
-			<label>Title*</label>
-			<input type="text" ng-model="create.title" />
+		<div class="form-group">
+			<form name="form" class="css-form" novalidate>
+			<div class="input-title">
+				<label>Title*</label>
+				<input type="text" class="form-control" ng-model="create.title" name="title" ng-maxlength="30" required="" />
+				<div class="error" role="alert">
+					<span ng-show="form.title.$error.maxlength">Title must within 30 characters</span>
+				</div>
+			</div>
+			<div class="input-id">
+				<label>ID*</label>
+				<input type="text" class="form-control text-uppercase" ng-model="create.idP1" name="idP1" ng-minlength="4" maxlength="4" required="" />
+				<span>-</span><span>0000</span><span>-</span>
+				<input type="text" class="form-control text-uppercase" ng-model="create.idP3" name="idP3" ng-minlength="4" maxlength="4" required="" />
+				<span>-</span>
+				<input type="text" class="form-control text-uppercase" ng-model="create.idP4" name="idP4" ng-minlength="4" maxlength="4" required="" />
+			</div>
+			<div class="input-game">
+				<label>Game Type*</label>
+				<select class="form-control" ng-model="create.game" name="game" required="">
+					<option value="smb">Super Mario Bros.</option>
+					<option value="smw">Super Mario World</option>
+					<option value="smb3">Super Mario Bros. 3</option>
+					<option value="smbu">New Super Mario Bros. U</option>
+				</select>
+			</div>
+			<div class="input-difficulty">
+				<label>Difficulty*</label>
+				<select class="form-control" ng-model="create.difficulty" name="difficulty" required="">
+					<option value="Easy">Easy</option>
+					<option value="Medium">Medium</option>
+					<option value="Hard">Hard</option>
+				</select>
+			</div>
+			<div class="input-description">
+				<label>Description</label>
+				<textarea class="form-control" ng-model="create.description" name="description"></textarea>
+			</div>
+			<button href="#" class="btn btn-success" d ng-click="create.createLevel()" ng-disabled="form.$invalid">Add Level</button>
+			</form>
 		</div>
-		<div class="inputID">
-			<label>ID*</label>
-			<input type="text" ng-model="create.ID" />
-		</div>
-		<div class="inputGame">
-			<label>Game Type*</label>
-			<select ng-model="create.game">
-				<option value="smb">Super Mario Bros.</option>
-				<option value="smw">Super Mario World</option>
-				<option value="smb3">Super Mario Bros. 3</option>
-				<option value="smbu">New Super Mario Bros. U</option>
-			</select>
-		</div>
-		<div class="inputDifficulty">
-			<label>Difficulty*</label>
-			<select ng-model="create.difficulty">
-				<option value="Easy">Easy</option>
-				<option value="Medium">Medium</option>
-				<option value="Hard">Hard</option>
-			</select>
-		</div>
-		<div class="inputDescription">
-			<label>Description</label>
-			<textarea ng-model="create.description"></textarea>
-		</div>
-		<button ng-click="create.createLevel()">Submit</button>
 	</div>
 </div>
